@@ -1,0 +1,137 @@
+[
+  {
+    "id": "sample1",
+    "slug": "sample-contemporary-apartment-interior",
+    "brand": "ants",
+    "title": "Contemporary Apartment Interior",
+    "category": "Residential Interiors",
+    "location": "Colombo",
+    "year": "2025",
+    "client": "",
+    "summary": "This is a sample project showing how your portfolio will look. Replace it with a real project from the admin panel.",
+    "description": "Use this space to describe the project: the brief, the scope of work, materials and finishes, any challenges solved and the final outcome.\n\nAdd as many photos as you like. The first one becomes the cover and the rest appear in the gallery below.",
+    "images": [
+      {
+        "src": "assets/img/samples/ants-1.jpg",
+        "thumb": "assets/img/samples/ants-1-t.jpg"
+      },
+      {
+        "src": "assets/img/samples/ants-2.jpg",
+        "thumb": "assets/img/samples/ants-2-t.jpg"
+      }
+    ],
+    "featured": true,
+    "published": true,
+    "sample": true,
+    "created": 1759999999,
+    "updated": 1759999999
+  },
+  {
+    "id": "sample2",
+    "slug": "sample-commercial-building-mep-installation",
+    "brand": "astan",
+    "title": "Commercial Building MEP Installation",
+    "category": "MEP Contracts",
+    "location": "Thalawathugoda",
+    "year": "2025",
+    "client": "",
+    "summary": "This is a sample project showing how your portfolio will look. Replace it with a real project from the admin panel.",
+    "description": "Use this space to describe the project: the brief, the scope of work, materials and finishes, any challenges solved and the final outcome.\n\nAdd as many photos as you like. The first one becomes the cover and the rest appear in the gallery below.",
+    "images": [
+      {
+        "src": "assets/img/samples/astan-1.jpg",
+        "thumb": "assets/img/samples/astan-1-t.jpg"
+      },
+      {
+        "src": "assets/img/samples/astan-2.jpg",
+        "thumb": "assets/img/samples/astan-2-t.jpg"
+      }
+    ],
+    "featured": true,
+    "published": true,
+    "sample": true,
+    "created": 1759999998,
+    "updated": 1759999998
+  },
+  {
+    "id": "sample3",
+    "slug": "sample-boutique-office-fit-out",
+    "brand": "ants",
+    "title": "Boutique Office Fit-out",
+    "category": "Office Interiors",
+    "location": "Battaramulla",
+    "year": "2025",
+    "client": "",
+    "summary": "This is a sample project showing how your portfolio will look. Replace it with a real project from the admin panel.",
+    "description": "Use this space to describe the project: the brief, the scope of work, materials and finishes, any challenges solved and the final outcome.\n\nAdd as many photos as you like. The first one becomes the cover and the rest appear in the gallery below.",
+    "images": [
+      {
+        "src": "assets/img/samples/ants-2.jpg",
+        "thumb": "assets/img/samples/ants-2-t.jpg"
+      },
+      {
+        "src": "assets/img/samples/ants-1.jpg",
+        "thumb": "assets/img/samples/ants-1-t.jpg"
+      }
+    ],
+    "featured": true,
+    "published": true,
+    "sample": true,
+    "created": 1759999997,
+    "updated": 1759999997
+  },
+  {
+    "id": "sample4",
+    "slug": "sample-cafe-interior-concept",
+    "brand": "ants",
+    "title": "Café Interior Concept",
+    "category": "Hospitality",
+    "location": "Nugegoda",
+    "year": "2024",
+    "client": "",
+    "summary": "This is a sample project showing how your portfolio will look. Replace it with a real project from the admin panel.",
+    "description": "Use this space to describe the project: the brief, the scope of work, materials and finishes, any challenges solved and the final outcome.\n\nAdd as many photos as you like. The first one becomes the cover and the rest appear in the gallery below.",
+    "images": [
+      {
+        "src": "assets/img/samples/ants-3.jpg",
+        "thumb": "assets/img/samples/ants-3-t.jpg"
+      },
+      {
+        "src": "assets/img/samples/ants-1.jpg",
+        "thumb": "assets/img/samples/ants-1-t.jpg"
+      }
+    ],
+    "featured": false,
+    "published": true,
+    "sample": true,
+    "created": 1759999996,
+    "updated": 1759999996
+  },
+  {
+    "id": "sample5",
+    "slug": "sample-electrical-distribution-upgrade",
+    "brand": "astan",
+    "title": "Electrical Distribution Upgrade",
+    "category": "Electrical",
+    "location": "Colombo",
+    "year": "2024",
+    "client": "",
+    "summary": "This is a sample project showing how your portfolio will look. Replace it with a real project from the admin panel.",
+    "description": "Use this space to describe the project: the brief, the scope of work, materials and finishes, any challenges solved and the final outcome.\n\nAdd as many photos as you like. The first one becomes the cover and the rest appear in the gallery below.",
+    "images": [
+      {
+        "src": "assets/img/samples/astan-2.jpg",
+        "thumb": "assets/img/samples/astan-2-t.jpg"
+      },
+      {
+        "src": "assets/img/samples/astan-1.jpg",
+        "thumb": "assets/img/samples/astan-1-t.jpg"
+      }
+    ],
+    "featured": false,
+    "published": true,
+    "sample": true,
+    "created": 1759999995,
+    "updated": 1759999995
+  }
+]

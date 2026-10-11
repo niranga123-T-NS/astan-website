@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="#2b2a33" stroke-opacity=".55" stroke-width="1.6">
+    <path d="M120 40L250 170V560L120 620M680 40L550 170V560L680 620M250 170H550M250 560H550"/>
+    <path d="M250 560L120 620M550 560L680 620"/>
+  </g>
+  <g stroke="#2b2a33" stroke-opacity=".18" stroke-width="1">
+    <path d="M285 560L220 600M330 560L290 610M375 560L360 615M425 560L440 615M470 560L510 610M515 560L580 600"/>
+  </g>
+  <rect x="330" y="210" width="140" height="170" stroke="#6e8ab2" stroke-width="2"/>
+  <path d="M400 210V380M330 295H470" stroke="#6e8ab2" stroke-width="1.4"/>
+  <g stroke="#2b2a33" stroke-width="2" stroke-opacity=".8">
+    <path d="M290 470h220v-40a14 14 0 0 0-14-14H304a14 14 0 0 0-14 14z"/>
+    <path d="M280 470v40h240v-40M290 510v14M510 510v14"/>
+    <path d="M300 430c20-10 60-10 80 0M420 430c20-10 60-10 80 0"/>
+  </g>
+  <g stroke="#e0a24e" stroke-width="2">
+    <path d="M585 300h50l-12-40h-26zM610 300v220M590 520h40"/>
+  </g>
+  <g stroke="#66bba4" stroke-width="2">
+    <path d="M190 520c0-40 10-70 20-90M200 520c5-50 30-80 50-95M205 520c-10-35-35-55-55-60"/>
+    <path d="M175 520h50l-6 40h-38z" stroke="#c07fa9"/>
+  </g>
+  <ellipse cx="400" cy="585" rx="150" ry="18" stroke="#c07fa9" stroke-opacity=".7" stroke-width="1.6"/>
+  <circle cx="400" cy="120" r="16" stroke="#e0a24e" stroke-width="1.8"/>
+  <path d="M400 40v64" stroke="#2b2a33" stroke-opacity=".5"/>
+</svg>

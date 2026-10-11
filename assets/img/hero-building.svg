@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 720" fill="none" stroke="#fff" stroke-linecap="square">
+<g stroke-opacity=".06" stroke-width="1">
+<path d="M0 0V720"/>
+<path d="M40 0V720"/>
+<path d="M80 0V720"/>
+<path d="M120 0V720"/>
+<path d="M160 0V720"/>
+<path d="M200 0V720"/>
+<path d="M240 0V720"/>
+<path d="M280 0V720"/>
+<path d="M320 0V720"/>
+<path d="M360 0V720"/>
+<path d="M400 0V720"/>
+<path d="M440 0V720"/>
+<path d="M480 0V720"/>
+<path d="M520 0V720"/>
+<path d="M560 0V720"/>
+<path d="M600 0V720"/>
+<path d="M640 0V720"/>
+<path d="M680 0V720"/>
+<path d="M720 0V720"/>
+<path d="M760 0V720"/>
+<path d="M800 0V720"/>
+<path d="M0 0H800"/>
+<path d="M0 40H800"/>
+<path d="M0 80H800"/>
+<path d="M0 120H800"/>
+<path d="M0 160H800"/>
+<path d="M0 200H800"/>
+<path d="M0 240H800"/>
+<path d="M0 280H800"/>
+<path d="M0 320H800"/>
+<path d="M0 360H800"/>
+<path d="M0 400H800"/>
+<path d="M0 440H800"/>
+<path d="M0 480H800"/>
+<path d="M0 520H800"/>
+<path d="M0 560H800"/>
+<path d="M0 600H800"/>
+<path d="M0 640H800"/>
+<path d="M0 680H800"/>
+<path d="M0 720H800"/>
+</g>
+<g stroke-opacity=".75" stroke-width="2"><path d="M300 640V150h200v490"/><path d="M290 150h220M300 120h200v30M330 120V90h140v30"/></g>
+<g stroke-opacity=".35" stroke-width="1.2">
+<path d="M300 180h200"/>
+<path d="M300 216h200"/>
+<path d="M300 252h200"/>
+<path d="M300 288h200"/>
+<path d="M300 324h200"/>
+<path d="M300 360h200"/>
+<path d="M300 396h200"/>
+<path d="M300 432h200"/>
+<path d="M300 468h200"/>
+<path d="M300 504h200"/>
+<path d="M300 540h200"/>
+<path d="M300 576h200"/>
+<path d="M300 612h200"/>
+<path d="M340 150v490"/>
+<path d="M380 150v490"/>
+<path d="M420 150v490"/>
+<path d="M460 150v490"/>
+</g>
+<g stroke-opacity=".6" stroke-width="2"><path d="M120 640V380h180M120 380l-20-20h200"/></g>
+<g stroke-opacity=".3" stroke-width="1.2">
+<path d="M140 410h140v24H140z"/>
+<path d="M140 450h140v24H140z"/>
+<path d="M140 490h140v24H140z"/>
+<path d="M140 530h140v24H140z"/>
+<path d="M140 570h140v24H140z"/>
+<path d="M140 610h140v24H140z"/>
+</g>
+<g stroke-opacity=".7" stroke-width="2"><path d="M500 640V330h170v310M490 330l95-90 95 90"/></g>
+<g stroke-opacity=".3" stroke-width="1.2"><path d="M530 370h110M530 420h110M530 470h110M530 520h110M530 570h110M585 370v230"/></g>
+<g fill="#7fb24e" stroke="none" fill-opacity=".9">
+<rect x="342" y="218" width="16" height="16"/>
+<rect x="422" y="290" width="16" height="16"/>
+<rect x="382" y="398" width="16" height="16"/>
+<rect x="462" y="470" width="16" height="16"/>
+<rect x="342" y="542" width="16" height="16"/>
+<rect x="565" y="280" width="16" height="16"/>
+</g>
+<g stroke-opacity=".8" stroke-width="2"><path d="M40 640h720"/></g>
+<g stroke-opacity=".4" stroke-width="1"><path d="M300 675h200M300 667v16M500 667v16M720 150v490M712 150h16M712 640h16M60 380v260M52 380h16M52 640h16"/></g>
+<g fill="#fff" fill-opacity=".45" stroke="none" font-family="Manrope, sans-serif" font-size="13" letter-spacing="2"><text x="368" y="700">24 000</text><text x="730" y="400" transform="rotate(90 730 400)">LEVEL 12</text><text x="70" y="500" transform="rotate(-90 70 500)">PODIUM</text></g>
+</svg>

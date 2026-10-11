@@ -1,53 +1,52 @@
 <?php
-// ASTAN International — contact form handler (works on GoDaddy cPanel / Linux hosting)
+require __DIR__ . '/includes/bootstrap.php';
 
-// ---- Settings ----
-$to   = 'info@astan-int.lk';          // where enquiries are delivered
-$from = 'website@astan-int.lk';       // must be an address on your own domain
-$back = 'contact.html';
-
-function go($status) {
-    global $back;
-    header('Location: ' . $back . '?status=' . $status . '#form-' . ($status === 'sent' ? 'ok' : 'err'));
+if (($result = handle_contact('astan')) !== null) {
+    header('Location: ' . url('contact.php?status=' . $result . '#enquiry'), true, 303);
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ' . $back);
-    exit;
-}
+$page = [
+    'title'  => 'Contact | ASTAN International (Pvt) Ltd',
+    'desc'   => 'Contact ASTAN International (Pvt) Ltd, 318/4D Sirinanda Jothikarama Road, Thalawathugoda. Phone +94 778 844 346 / +94 754 649 083, email info@astan-int.lk.',
+    'brand'  => 'astan',
+    'active' => 'contact',
+    'path'   => 'contact.php',
+];
+$formBrand = 'astan';
+$formOptions = array_column(SERVICES, 'title');
+$a = COMPANIES['astan'];
+require __DIR__ . '/includes/header.php';
+?>
 
-// Spam trap: real visitors never fill the hidden "website" field
-if (!empty($_POST['website'])) {
-    go('sent');
-}
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="<?= url() ?>">Home</a> &nbsp;/&nbsp; Contact</div>
+    <span class="eyebrow">Contact</span>
+    <h1>Let&rsquo;s talk about <em>your project</em></h1>
+    <p class="lead">Call, email or send a message. We usually reply within one business day.</p>
+  </div>
+</section>
 
-function clean($v, $max) {
-    $v = trim((string)$v);
-    $v = str_replace(["\r", "\n", "%0a", "%0d"], ' ', $v);   // block header injection
-    return mb_substr(strip_tags($v), 0, $max);
-}
+<section class="section">
+  <div class="container contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Visit or call us</h2>
+      <ul class="contact-list">
+        <li><?= icon('pin') ?><div><strong>Office</strong><?= e(ADDRESS) ?></div></li>
+        <li><?= icon('phone') ?><div><strong>Phone</strong><?php foreach (PHONES as $i => $ph): ?><?= $i ? '<br>' : '' ?><a href="<?= tel($ph) ?>"><?= e($ph) ?></a><?php endforeach; ?></div></li>
+        <li><?= icon('mail') ?><div><strong>Email</strong><a href="mailto:<?= e($a['email']) ?>"><?= e($a['email']) ?></a><br><span class="muted">Design enquiries: <a href="mailto:<?= e(COMPANIES['ants']['email']) ?>"><?= e(COMPANIES['ants']['email']) ?></a></span></div></li>
+        <li><?= icon('id') ?><div><strong>Registration</strong>ASTAN International (Pvt) Ltd &middot; <?= e($a['reg']) ?><br>ANTS Design Ventures &middot; <?= e(COMPANIES['ants']['reg']) ?></div></li>
+      </ul>
+    </div>
+    <div class="reveal reveal-d1">
+      <?php require __DIR__ . '/includes/contact-form.php'; ?>
+    </div>
+  </div>
+</section>
 
-$name    = clean($_POST['name'] ?? '', 100);
-$email   = clean($_POST['email'] ?? '', 150);
-$phone   = clean($_POST['phone'] ?? '', 30);
-$service = clean($_POST['service'] ?? 'general', 50);
-$message = mb_substr(trim(strip_tags((string)($_POST['message'] ?? ''))), 0, 5000);
+<iframe class="map" title="Map: ASTAN International, Thalawathugoda" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+  src="https://www.google.com/maps?q=Sirinanda+Jothikarama+Road,+Thalawathugoda,+Sri+Lanka&amp;output=embed"></iframe>
 
-if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    go('error');
-}
-
-$subject = 'Website enquiry: ' . $service . ' - ' . $name;
-$body  = "New enquiry from the ASTAN International website\n\n";
-$body .= "Name:    $name\n";
-$body .= "Email:   $email\n";
-$body .= "Phone:   $phone\n";
-$body .= "Service: $service\n\n";
-$body .= "Message:\n$message\n";
-
-$headers  = "From: ASTAN Website <$from>\r\n";
-$headers .= "Reply-To: $name <$email>\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-
-go(mail($to, $subject, $body, $headers, '-f' . $from) ? 'sent' : 'error');
+<?php require __DIR__ . '/includes/footer.php'; ?>

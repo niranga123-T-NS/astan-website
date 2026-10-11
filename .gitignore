@@ -1,0 +1,8 @@
+# Live content created on the server through the admin panel
+data/projects.json
+data/projects.json.tmp
+data/admin.json
+data/login-attempts.json
+uploads/projects/*
+!uploads/projects/.gitkeep
+.DS_Store

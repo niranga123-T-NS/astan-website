@@ -1,30 +1,56 @@
-# ASTAN International — Apache settings for GoDaddy cPanel hosting
+# ASTAN International & ANTS Design Ventures — Apache settings for GoDaddy cPanel hosting
 
-ErrorDocument 404 /404.html
+DirectoryIndex index.php index.html
+ErrorDocument 404 /404.php
+Options -Indexes
 
-# Force HTTPS and the www. domain.
-# Remove the "# " from the 6 lines below ONLY after the SSL certificate is active,
-# otherwise visitors will see a security error.
-# <IfModule mod_rewrite.c>
-#   RewriteEngine On
-#   RewriteCond %{HTTPS} off [OR]
-#   RewriteCond %{HTTP_HOST} !^www\. [NC]
-#   RewriteRule ^ https://www.astan-int.lk%{REQUEST_URI} [L,R=301]
-# </IfModule>
+# Keep private files private
+<FilesMatch "(^\.|\.(md|json|ini|log|sh|py|lock)$|^_lib\.php$)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Deny from all
+  </IfModule>
+</FilesMatch>
 
-# Compression
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # --- HTTPS -------------------------------------------------------------
+  # Remove the "# " from the next 2 lines ONLY after the SSL certificate is active.
+  # RewriteCond %{HTTPS} off
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # --- antsdv.lk ---------------------------------------------------------
+  # If antsdv.lk is added to this hosting account (as an alias / parked domain
+  # pointing to public_html), visitors to antsdv.lk are sent to the ANTS pages.
+  RewriteCond %{HTTP_HOST} ^(www\.)?antsdv\.lk$ [NC]
+  RewriteRule ^$ /ants/ [L,R=302]
+
+  # Old page addresses from the first version of the site
+  RewriteRule ^(index|about|services|contact)\.html$ /$1.php [L,R=301]
+
+  # sitemap.xml is generated automatically
+  RewriteRule ^sitemap\.xml$ sitemap.php [L]
 </IfModule>
 
-# Browser caching
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/xml
+</IfModule>
+
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
   ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
-  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType image/webp "access plus 1 year"
 </IfModule>
-
-Options -Indexes
