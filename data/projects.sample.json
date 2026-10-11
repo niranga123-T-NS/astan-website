@@ -1,5 +1,63 @@
 [
   {
+    "id": "res-thalawathugoda-2020",
+    "slug": "residence-thalawathugoda",
+    "brand": "ants",
+    "title": "Residence, Thalawathugoda",
+    "category": "Residential Interiors",
+    "location": "Thalawathugoda, Sri Lanka",
+    "year": "2020",
+    "client": "",
+    "summary": "A calm, warm family home: a gallery-like entrance foyer and an intimate dining room in soft greys, dark timber and brass.",
+    "description": "The entrance foyer is arranged as a small gallery. A long timber sideboard with brass-toned, pyramid-faceted doors sits beneath a large lily-pond painting, picked out by ceiling-mounted adjustable spotlights. Marble-look floor tiles and soft grey walls keep the space light, while the timber entrance doors open onto the garden.\n\nIn the dining room, a six-seat timber table with softly rounded corners is paired with upholstered chairs in a pale textured fabric. Three smoked-glass globe pendants hang at staggered heights over the table, a round white-framed mirror reflects the garden light, and full-height wave curtains with sheers frame the windows.",
+    "images": [
+      {
+        "src": "assets/img/projects/residence-thalawathugoda/foyer-1.jpg",
+        "thumb": "assets/img/projects/residence-thalawathugoda/foyer-1-t.jpg",
+        "stage": ""
+      },
+      {
+        "src": "assets/img/projects/residence-thalawathugoda/foyer-2.jpg",
+        "thumb": "assets/img/projects/residence-thalawathugoda/foyer-2-t.jpg",
+        "stage": ""
+      },
+      {
+        "src": "assets/img/projects/residence-thalawathugoda/foyer-3.jpg",
+        "thumb": "assets/img/projects/residence-thalawathugoda/foyer-3-t.jpg",
+        "stage": ""
+      },
+      {
+        "src": "assets/img/projects/residence-thalawathugoda/foyer-4.jpg",
+        "thumb": "assets/img/projects/residence-thalawathugoda/foyer-4-t.jpg",
+        "stage": ""
+      },
+      {
+        "src": "assets/img/projects/residence-thalawathugoda/dining-1.jpg",
+        "thumb": "assets/img/projects/residence-thalawathugoda/dining-1-t.jpg",
+        "stage": ""
+      },
+      {
+        "src": "assets/img/projects/residence-thalawathugoda/dining-2.jpg",
+        "thumb": "assets/img/projects/residence-thalawathugoda/dining-2-t.jpg",
+        "stage": ""
+      },
+      {
+        "src": "assets/img/projects/residence-thalawathugoda/dining-3.jpg",
+        "thumb": "assets/img/projects/residence-thalawathugoda/dining-3-t.jpg",
+        "stage": ""
+      },
+      {
+        "src": "assets/img/projects/residence-thalawathugoda/dining-4.jpg",
+        "thumb": "assets/img/projects/residence-thalawathugoda/dining-4-t.jpg",
+        "stage": ""
+      }
+    ],
+    "featured": true,
+    "published": true,
+    "created": 1760100000,
+    "updated": 1760100000
+  },
+  {
     "id": "sample1",
     "slug": "sample-contemporary-apartment-interior",
     "brand": "ants",
@@ -37,7 +95,7 @@
         "stage": "after"
       }
     ],
-    "featured": true,
+    "featured": false,
     "published": true,
     "sample": true,
     "created": 1759999999,
@@ -64,7 +122,7 @@
         "thumb": "assets/img/samples/astan-2-t.jpg"
       }
     ],
-    "featured": true,
+    "featured": false,
     "published": true,
     "sample": true,
     "created": 1759999998,
@@ -91,7 +149,7 @@
         "thumb": "assets/img/samples/ants-1-t.jpg"
       }
     ],
-    "featured": true,
+    "featured": false,
     "published": true,
     "sample": true,
     "created": 1759999997,

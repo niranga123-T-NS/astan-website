@@ -11,7 +11,8 @@ $page = [
 
 $featured = projects_featured(null, 3);
 $heroProject = null;
-foreach (projects_featured('astan', 10) as $p) {
+// Banner photo: a real (non-sample) featured project, ASTAN's own first, otherwise ANTS.
+foreach (array_merge(projects_featured('astan', 10), projects_featured('ants', 10)) as $p) {
     if (project_cover($p) && empty($p['sample'])) { $heroProject = $p; break; }
 }
 

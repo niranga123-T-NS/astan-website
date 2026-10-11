@@ -70,9 +70,12 @@ function projects_save(array $list): bool
 /** Published projects, optionally filtered by brand. */
 function projects_published(?string $brand = null): array
 {
-    return array_values(array_filter(projects_all(), function ($p) use ($brand) {
+    $list = array_values(array_filter(projects_all(), function ($p) use ($brand) {
         return !empty($p['published']) && ($brand === null || $p['brand'] === $brand);
     }));
+    // Featured projects first, then real projects before samples (usort keeps the order otherwise).
+    usort($list, fn($a, $b) => [empty($a['featured']), !empty($a['sample'])] <=> [empty($b['featured']), !empty($b['sample'])]);
+    return $list;
 }
 
 function projects_featured(?string $brand = null, int $limit = 6): array
