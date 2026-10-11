@@ -38,27 +38,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors[] = 'Please enter a project title.';
         }
 
-        // Existing photos: keep order, drop removed ones.
+        // Existing photos: keep order, drop removed ones, update their stage.
         $remove = array_map('strval', (array)($_POST['remove'] ?? []));
+        $stageIn = (array)($_POST['stage'] ?? []);
         $kept = $dropped = [];
         foreach ($p['images'] as $img) {
             if (in_array($img['src'], $remove, true)) {
                 $dropped[] = $img;
-            } else {
-                $kept[] = $img;
+                continue;
             }
+            $st = (string)($stageIn[md5($img['src'])] ?? image_stage($img));
+            $img['stage'] = isset(STAGES[$st]) ? $st : '';
+            $kept[] = $img;
         }
 
-        // New uploads.
+        // New uploads: one upload box per stage (photos, photos_before, photos_design, photos_after).
         $added = [];
-        $files = $_FILES['photos'] ?? null;
-        if ($files && is_array($files['name'])) {
+        foreach (array_keys(STAGES) as $stage) {
+            $files = $_FILES[$stage === '' ? 'photos' : 'photos_' . $stage] ?? null;
+            if (!$files || !is_array($files['name'])) {
+                continue;
+            }
             foreach ($files['name'] as $i => $name) {
                 if ($files['error'][$i] === UPLOAD_ERR_NO_FILE) {
                     continue;
                 }
                 $r = store_upload(['name' => $name, 'tmp_name' => $files['tmp_name'][$i], 'error' => $files['error'][$i], 'size' => $files['size'][$i]]);
                 if (is_array($r)) {
+                    $r['stage'] = $stage;
                     $added[] = $r;
                 } else {
                     $errors[] = $r;
@@ -158,24 +165,35 @@ admin_head($isNew ? 'New project' : 'Edit project');
 
   <div class="card">
     <h2>Photos</h2>
+    <p class="hint">For interior projects you can show the journey: add photos as <strong>Before</strong>, <strong>Design</strong> (concepts, sketches, 3D renders) and <strong>After</strong>. When a project has both Before and After photos, the website shows a slider to compare them. Use <strong>General</strong> for everything else.</p>
     <?php if ($p['images']): ?>
-      <p class="hint">Choose the <strong>cover</strong> photo (shown in the portfolio grid). Tick <strong>remove</strong> to delete a photo.</p>
+      <p class="hint">Choose the <strong>cover</strong> photo (shown in the portfolio grid), set each photo's stage, or tick <strong>remove</strong> to delete it.</p>
       <div class="photos">
-        <?php foreach ($p['images'] as $i => $img): ?>
+        <?php foreach ($p['images'] as $i => $img): $st = image_stage($img); ?>
           <div class="photo">
-            <img src="<?= e(img_url($img, 'thumb')) ?>" alt="">
+            <div class="photo__img"><img src="<?= e(img_url($img, 'thumb')) ?>" alt=""><?php if ($st): ?><span class="stage stage--<?= e($st) ?>"><?= e(STAGES[$st]) ?></span><?php endif; ?></div>
             <label><input type="radio" name="cover" value="<?= e($img['src']) ?>" <?= $i === 0 ? 'checked' : '' ?>> Cover</label>
+            <label class="photo__stage">Stage
+              <select name="stage[<?= md5($img['src']) ?>]">
+                <?php foreach (STAGES as $k => $label): ?><option value="<?= e($k) ?>"<?= $k === $st ? ' selected' : '' ?>><?= e($label) ?></option><?php endforeach; ?>
+              </select>
+            </label>
             <label class="rm"><input type="checkbox" name="remove[]" value="<?= e($img['src']) ?>"> Remove</label>
           </div>
         <?php endforeach; ?>
       </div>
     <?php endif; ?>
-    <label class="drop">
-      <input type="file" name="photos[]" accept="image/jpeg,image/png,image/webp" multiple data-photos>
-      <strong>+ Add photos</strong>
-      <span>JPG, PNG or WebP. You can select several at once. Large photos are resized automatically.</span>
-      <span class="drop__list" data-photo-list></span>
-    </label>
+    <div class="drops">
+      <?php foreach (['' => ['General photos', 'Finished project, details, site photos'], 'before' => ['Before', 'The space before work started'], 'design' => ['Design', 'Concepts, sketches, mood boards, 3D renders'], 'after' => ['After', 'The finished space, ideally from the same angles as Before']] as $k => [$label, $help]): ?>
+        <label class="drop drop--<?= $k === '' ? 'general' : e($k) ?>">
+          <input type="file" name="<?= $k === '' ? 'photos' : 'photos_' . e($k) ?>[]" accept="image/jpeg,image/png,image/webp" multiple data-photos>
+          <strong>+ <?= e($label) ?></strong>
+          <span><?= e($help) ?></span>
+          <span class="drop__list" data-photo-list></span>
+        </label>
+      <?php endforeach; ?>
+    </div>
+    <p class="hint" style="margin-top:12px">JPG, PNG or WebP. Select several photos at once. Large photos are resized automatically.</p>
   </div>
 
   <div class="savebar">

@@ -14,6 +14,7 @@ function project_card(array $p, bool $showBrand = true): string
         . '<div class="work-card__img">' . $img
         . ($showBrand ? '<span class="work-card__brand work-card__brand--' . e($p['brand']) . '">' . e(brand_label($p['brand'])) . '</span>' : '')
         . (!empty($p['sample']) ? '<span class="work-card__sample">Sample</span>' : '')
+        . (has_before_after($p) ? '<span class="work-card__ba">Before &amp; After</span>' : '')
         . '</div>'
         . '<div class="work-card__body"><h3>' . e($p['title']) . '</h3>'
         . '<p>' . e(implode(' · ', $meta)) . '</p></div>'

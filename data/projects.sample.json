@@ -9,15 +9,32 @@
     "year": "2025",
     "client": "",
     "summary": "This is a sample project showing how your portfolio will look. Replace it with a real project from the admin panel.",
-    "description": "Use this space to describe the project: the brief, the scope of work, materials and finishes, any challenges solved and the final outcome.\n\nAdd as many photos as you like. The first one becomes the cover and the rest appear in the gallery below.",
+    "description": "Use this space to describe the project: the brief, the scope of work, materials and finishes, any challenges solved and the final outcome.\n\nThis sample shows the Before, Design and After stages. Upload photos under each stage in the admin panel, and the page groups them automatically, with a slider to compare Before and After.",
     "images": [
       {
         "src": "assets/img/samples/ants-1.jpg",
-        "thumb": "assets/img/samples/ants-1-t.jpg"
+        "thumb": "assets/img/samples/ants-1-t.jpg",
+        "stage": "after"
+      },
+      {
+        "src": "assets/img/samples/ants-before.jpg",
+        "thumb": "assets/img/samples/ants-before-t.jpg",
+        "stage": "before"
+      },
+      {
+        "src": "assets/img/samples/ants-plan.jpg",
+        "thumb": "assets/img/samples/ants-plan-t.jpg",
+        "stage": "design"
       },
       {
         "src": "assets/img/samples/ants-2.jpg",
-        "thumb": "assets/img/samples/ants-2-t.jpg"
+        "thumb": "assets/img/samples/ants-2-t.jpg",
+        "stage": "design"
+      },
+      {
+        "src": "assets/img/samples/ants-3.jpg",
+        "thumb": "assets/img/samples/ants-3-t.jpg",
+        "stage": "after"
       }
     ],
     "featured": true,

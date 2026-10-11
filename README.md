@@ -27,6 +27,8 @@ Built with plain PHP, HTML, CSS and JavaScript: no database and no WordPress. It
 5. Click **+ Add photos** and select one or more photos. Phone photos are fine because they are resized automatically.
 6. Click **Add project**. It appears on the website immediately.
 
+**Before / Design / After (interior projects):** the Photos section has four upload boxes: *General*, *Before*, *Design* (concepts, sketches, 3D renders) and *After*. The project page groups the photos under those headings. When a project has both Before and After photos, it also shows a slider to compare them (the first Before and first After photo, so take them from the same angle). You can change any photo's stage later with its *Stage* dropdown. Projects that don't need stages just use *General*.
+
 Other options:
 - **Cover:** pick which photo appears in the portfolio grid.
 - **★ Featured:** shows the project first and on the home page.

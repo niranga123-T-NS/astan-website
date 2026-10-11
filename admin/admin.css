@@ -80,7 +80,20 @@ input:focus, textarea:focus { outline: 2px solid #9cc47a; outline-offset: 0; bor
 
 .photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 18px; }
 .photo { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; font-size: .82rem; }
+.photo__img { position: relative; }
 .photo img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.photo__stage { border-top: 1px solid var(--line); }
+.photo__stage select { margin: 0 0 0 auto; width: auto; padding: 4px 8px; font-size: .82rem; }
+.stage { position: absolute; left: 6px; top: 6px; font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; color: #fff; }
+.stage--before { background: #8a6d4a; }
+.stage--design { background: #6e8ab2; }
+.stage--after { background: #3f9c84; }
+.drops { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.drops .drop { padding: 20px 12px; }
+.drop--before { border-color: #c9b59b; }
+.drop--design { border-color: #a9bbd6; }
+.drop--after { border-color: #9fd0c1; }
+.drop.has-files { background: #f3f9ee; border-style: solid; }
 .photo label { display: flex; gap: 6px; align-items: center; padding: 6px 10px; }
 .photo .rm { color: #b42318; border-top: 1px solid var(--line); }
 .photo:has(.rm input:checked) img { opacity: .3; }
@@ -93,6 +106,7 @@ input:focus, textarea:focus { outline: 2px solid #9cc47a; outline-offset: 0; bor
 
 @media (max-width: 640px) {
   .row, .seg { grid-template-columns: 1fr; }
+  .drops { grid-template-columns: 1fr 1fr; }
   .pitem { grid-template-columns: 96px 1fr; gap: 12px; }
   .top { padding: 10px 14px; }
   .card { padding: 18px; }

@@ -129,6 +129,36 @@ function project_cover(array $p): ?array
     return $p['images'][0] ?? null;
 }
 
+/** Photo stages for interior projects. '' = general photo. */
+const STAGES = [
+    ''       => 'General',
+    'before' => 'Before',
+    'design' => 'Design',
+    'after'  => 'After',
+];
+
+function image_stage(array $img): string
+{
+    $s = $img['stage'] ?? '';
+    return isset(STAGES[$s]) ? $s : '';
+}
+
+/** Images grouped by stage, in the order Before → Design → After → General. */
+function project_stages(array $p): array
+{
+    $g = ['before' => [], 'design' => [], 'after' => [], '' => []];
+    foreach ($p['images'] ?? [] as $img) {
+        $g[image_stage($img)][] = $img;
+    }
+    return $g;
+}
+
+function has_before_after(array $p): bool
+{
+    $g = project_stages($p);
+    return $g['before'] && $g['after'];
+}
+
 /* ---------------- Image uploads ---------------- */
 
 /**

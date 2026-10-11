@@ -9,15 +9,17 @@
 
   var form = document.querySelector('form[data-resize]');
   if (!form) return;
-  var input = form.querySelector('[data-photos]');
-  var list = form.querySelector('[data-photo-list]');
+  var inputs = Array.prototype.slice.call(form.querySelectorAll('[data-photos]'));
   var status = form.querySelector('[data-status]');
   var save = form.querySelector('[data-save]');
 
-  input.addEventListener('change', function () {
-    var n = input.files.length;
-    list.textContent = n ? n + ' photo' + (n > 1 ? 's' : '') + ' selected: ' +
-      Array.prototype.map.call(input.files, function (f) { return f.name; }).join(', ') : '';
+  inputs.forEach(function (input) {
+    var list = input.parentNode.querySelector('[data-photo-list]');
+    input.addEventListener('change', function () {
+      var n = input.files.length;
+      list.textContent = n ? n + ' photo' + (n > 1 ? 's' : '') + ' selected' : '';
+      input.parentNode.classList.toggle('has-files', n > 0);
+    });
   });
 
   // Shrink large photos in the browser before uploading (faster uploads on mobile data).
@@ -45,7 +47,8 @@
 
   var busy = false;
   form.addEventListener('submit', function (ev) {
-    if (busy || !input.files.length || !window.DataTransfer) {
+    var total = inputs.reduce(function (n, i) { return n + i.files.length; }, 0);
+    if (busy || !total || !window.DataTransfer) {
       save.disabled = true;
       status.textContent = 'Saving…';
       return;
@@ -54,11 +57,14 @@
     busy = true;
     save.disabled = true;
     status.textContent = 'Preparing photos…';
-    Promise.all(Array.prototype.map.call(input.files, shrink)).then(function (files) {
-      var dt = new DataTransfer();
-      files.forEach(function (f) { dt.items.add(f); });
-      input.files = dt.files;
-      status.textContent = 'Uploading ' + files.length + ' photo(s)…';
+    Promise.all(inputs.map(function (input) {
+      return Promise.all(Array.prototype.map.call(input.files, shrink)).then(function (files) {
+        var dt = new DataTransfer();
+        files.forEach(function (f) { dt.items.add(f); });
+        input.files = dt.files;
+      });
+    })).then(function () {
+      status.textContent = 'Uploading ' + total + ' photo(s)…';
       form.submit();
     });
   });

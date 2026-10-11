@@ -111,6 +111,12 @@
     if (links.length < 2) { lb.querySelector('.lb-prev').hidden = true; lb.querySelector('.lb-next').hidden = true; }
   }
 
+  // Before / after comparison slider
+  document.querySelectorAll('[data-compare]').forEach(function (c) {
+    var r = c.querySelector('input[type=range]');
+    r.addEventListener('input', function () { c.style.setProperty('--pos', r.value + '%'); });
+  });
+
   // Bring a form result message into view
   var note = document.querySelector('.notice');
   if (note) note.scrollIntoView({ block: 'center' });
