@@ -31,8 +31,8 @@ $nav = $brand === 'ants'
   <link rel="icon" href="<?= url($brand === 'ants' ? 'assets/img/ants-favicon.svg' : 'assets/img/favicon.svg') ?>" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="<?= url('assets/css/site.css') ?>?v=2">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="<?= url('assets/css/site.css') ?>?v=3">
   <script type="application/ld+json"><?= json_encode([
       '@context' => 'https://schema.org',
       '@type' => 'Organization',
@@ -45,6 +45,18 @@ $nav = $brand === 'ants'
 </head>
 <body class="theme-<?= e($brand) ?> <?= e($page['class'] ?? '') ?>">
   <a class="skip" href="#main">Skip to content</a>
+  <div class="utility">
+    <div class="container utility__inner">
+      <div class="utility__group">
+        <a href="<?= tel(PHONES[0]) ?>"><?= icon('phone') ?><?= e(PHONES[0]) ?></a>
+        <a href="mailto:<?= e($co['email']) ?>"><?= icon('mail') ?><?= e($co['email']) ?></a>
+      </div>
+      <div class="utility__group utility__group--end">
+        <span><?= icon('pin') ?>Thalawathugoda, Sri Lanka</span>
+        <span class="utility__reg">Reg. <?= e($co['reg']) ?></span>
+      </div>
+    </div>
+  </div>
   <header class="site-header" data-header>
     <div class="container header-inner">
       <?php if ($brand === 'ants'): ?>

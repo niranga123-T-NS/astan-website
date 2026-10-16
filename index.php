@@ -7,6 +7,7 @@ $page = [
     'brand'  => 'astan',
     'active' => 'home',
     'path'   => '',
+    'class'  => 'page-home',
 ];
 
 $featured = projects_featured(null, 3);
@@ -15,95 +16,65 @@ $heroProject = null;
 foreach (array_merge(projects_featured('astan', 10), projects_featured('ants', 10)) as $p) {
     if (project_cover($p) && empty($p['sample'])) { $heroProject = $p; break; }
 }
+$heroImg  = $heroProject ? project_cover($heroProject) : null;
+$aboutImg = $heroProject ? ($heroProject['images'][5] ?? $heroProject['images'][1] ?? null) : null;
+$serviceCount = count(SERVICES);
 
 require __DIR__ . '/includes/header.php';
 ?>
 
-<section class="hero">
-  <div class="container hero__grid">
-    <div>
-      <span class="eyebrow reveal">ASTAN International (Pvt) Ltd &middot; Sri Lanka</span>
-      <h1 class="reveal reveal-d1">Engineering, interiors &amp; enterprise, <em>built on trust.</em></h1>
-      <p class="hero__lead reveal reveal-d2">One partner for MEP contracting, electrical consultancy, interior design and construction, real estate, international trade and investment.</p>
+<section class="hero<?= $heroImg ? ' hero--photo' : '' ?>">
+  <?php if ($heroImg): ?>
+    <img class="hero__bg" src="<?= e(img_url($heroImg)) ?>" alt="" fetchpriority="high">
+  <?php else: ?>
+    <img class="hero__art" src="<?= url('assets/img/hero-building.svg') ?>" alt="" width="800" height="720">
+  <?php endif; ?>
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <span class="eyebrow reveal">ASTAN International (Pvt) Ltd</span>
+      <h1 class="reveal reveal-d1">Engineering, interiors and enterprise <span class="hl">you can rely on.</span></h1>
+      <p class="hero__lead reveal reveal-d2">One accountable partner for MEP contracting, electrical consultancy, interior design and construction, real estate, international trade and investment.</p>
       <div class="hero__actions reveal reveal-d3">
-        <a class="btn btn--accent" href="<?= url('portfolio.php') ?>">View our work <?= icon('arrow') ?></a>
-        <a class="btn btn--ghost" href="<?= url('services.php') ?>">Our services</a>
+        <a class="btn btn--accent" href="<?= url('contact.php') ?>">Request a quote <?= icon('arrow') ?></a>
+        <a class="btn btn--ghost" href="<?= url('portfolio.php') ?>">View our projects</a>
       </div>
     </div>
-    <div class="hero__visual reveal reveal-d2">
-      <?php if ($heroProject): $c = project_cover($heroProject); ?>
-        <figure class="hero__photo">
-          <img src="<?= e(img_url($c)) ?>" alt="<?= e($heroProject['title']) ?>">
-          <figcaption><strong><?= e($heroProject['title']) ?></strong><?= e(implode(' · ', array_filter([$heroProject['location'] ?? '', $heroProject['year'] ?? '']))) ?></figcaption>
-        </figure>
-      <?php else: ?>
-        <img src="<?= url('assets/img/hero-building.svg') ?>" alt="" width="800" height="720">
-      <?php endif; ?>
-    </div>
-  </div>
-</section>
-
-<div class="container">
-  <div class="pillars reveal">
-    <?php $n = 0; foreach (DIVISIONS as $key => $d): $n++; ?>
-      <a class="pillar" href="<?= url('services.php#' . $d['services'][0]) ?>">
-        <span class="pillar__num">0<?= $n ?></span>
-        <h3><?= e($d['title']) ?></h3>
-        <p><?= e(implode(' · ', array_map(fn($s) => SERVICES[$s]['title'], $d['services']))) ?></p>
+    <?php if ($heroProject): ?>
+      <a class="hero__tag reveal reveal-d3" href="<?= url('project.php?p=' . rawurlencode($heroProject['slug'])) ?>">
+        <span>Featured project</span>
+        <strong><?= e($heroProject['title']) ?></strong>
+        <em><?= e($heroProject['year'] ?? '') ?> &middot; <?= e(brand_label($heroProject['brand'])) ?> <?= icon('arrow') ?></em>
       </a>
-    <?php endforeach; ?>
+    <?php endif; ?>
   </div>
-</div>
-
-<section class="section">
-  <div class="container intro">
-    <div class="reveal">
-      <span class="eyebrow">Who we are</span>
-      <h2>One group. <em>Every stage</em> of your project.</h2>
-    </div>
-    <div class="reveal reveal-d1">
-      <p class="statement">We bring engineering, design, construction, property and trade under one roof, so you have a single accountable partner from first idea to final handover.</p>
-      <p class="lead">ASTAN International (Pvt) Ltd is a Sri Lankan company based in Thalawathugoda. Together with our design arm, ANTS Design Ventures, we serve homeowners, businesses, developers and international partners who value honest advice, quality workmanship and on-time delivery.</p>
-      <div class="facts">
-        <div class="fact"><strong>Headquarters</strong><span>Thalawathugoda, Sri Lanka</span></div>
-        <div class="fact"><strong>Company Reg.</strong><span><?= e(COMPANIES['astan']['reg']) ?></span></div>
-        <div class="fact"><strong>Design arm</strong><span>ANTS Design Ventures</span></div>
-        <div class="fact"><strong>Reach</strong><span>Local delivery, international trade</span></div>
-      </div>
-      <p style="margin-top:36px"><a class="link-arrow" href="<?= url('about.php') ?>">More about the group <?= icon('arrow') ?></a></p>
-    </div>
+  <div class="container">
+    <dl class="kpis reveal">
+      <div><dt><?= count(DIVISIONS) ?></dt><dd>Business divisions</dd></div>
+      <div><dt><?= $serviceCount ?></dt><dd>Specialist services</dd></div>
+      <div><dt>2</dt><dd>Group companies</dd></div>
+      <div><dt>1</dt><dd>Accountable partner</dd></div>
+    </dl>
   </div>
 </section>
-
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__track">
-    <?php for ($k = 0; $k < 2; $k++): ?>
-      <span>MEP Contracts</span><span>Electrical Consultancy</span><span>Interior Design</span><span>Interior Construction</span><span>Real Estate</span><span>Investments</span><span>Import &amp; Export</span><span>Service Exports</span>
-    <?php endfor; ?>
-  </div>
-</div>
 
 <section class="section">
   <div class="container">
-    <div class="head-row reveal">
-      <div>
-        <span class="eyebrow">What we do</span>
-        <h2>Four divisions, <em>one team</em></h2>
-      </div>
-      <p class="lead">Choose a single service or combine several. Our divisions work together so your project runs smoothly.</p>
+    <div class="section-head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2>Four divisions. One coordinated team.</h2>
+      <p class="lead">Choose a single service or combine several. Our divisions plan and deliver together, so your project runs smoothly from start to finish.</p>
     </div>
     <div class="divisions">
-      <?php $n = 0; foreach (DIVISIONS as $key => $d): $n++; ?>
+      <?php foreach (DIVISIONS as $key => $d): ?>
         <article class="division reveal<?= $key === 'interiors' ? ' division--ants' : '' ?>">
           <span class="division__icon"><?= icon($d['icon']) ?></span>
-          <span class="division__num">0<?= $n ?></span>
-          <?php if ($key === 'interiors'): ?><span class="division__tag">with ANTS Design Ventures</span><?php endif; ?>
           <h3><?= e($d['title']) ?></h3>
+          <?php if ($key === 'interiors'): ?><span class="division__tag">with ANTS Design Ventures</span><?php endif; ?>
           <p><?= e($d['intro']) ?></p>
           <ul>
-            <?php foreach ($d['services'] as $s): ?><li><?= e(SERVICES[$s]['title']) ?></li><?php endforeach; ?>
+            <?php foreach ($d['services'] as $s): ?><li><?= icon('check') ?><?= e(SERVICES[$s]['title']) ?></li><?php endforeach; ?>
           </ul>
-          <a class="link-arrow" href="<?= url('services.php#' . $d['services'][0]) ?>">Explore <?= icon('arrow') ?></a>
+          <a class="link-arrow" href="<?= url('services.php#' . $d['services'][0]) ?>">Learn more <?= icon('arrow') ?></a>
         </article>
       <?php endforeach; ?>
     </div>
@@ -111,16 +82,47 @@ require __DIR__ . '/includes/header.php';
 </section>
 
 <section class="section section--alt">
-  <div class="container">
-    <div class="head-row reveal">
-      <div>
-        <span class="eyebrow">Selected work</span>
-        <h2>Recent <em>projects</em></h2>
+  <div class="container split">
+    <div class="split__media reveal">
+      <?php if ($aboutImg): ?>
+        <img src="<?= e(img_url($aboutImg)) ?>" alt="<?= e($heroProject['title']) ?>" loading="lazy">
+      <?php else: ?>
+        <div class="art-dark"><img src="<?= url('assets/img/hero-building.svg') ?>" alt="" width="800" height="720"></div>
+      <?php endif; ?>
+      <div class="split__badge">
+        <img src="<?= url('assets/img/ants-logo.svg') ?>" alt="">
+        <div><strong>ANTS Design Ventures</strong>Our in-house design arm</div>
       </div>
-      <a class="link-arrow" href="<?= url('portfolio.php') ?>">View full portfolio <?= icon('arrow') ?></a>
+    </div>
+    <div class="reveal reveal-d1">
+      <span class="eyebrow">About the group</span>
+      <h2>From first idea to final handover, under one roof.</h2>
+      <p class="lead">ASTAN International (Pvt) Ltd is a registered Sri Lankan company based in Thalawathugoda. With our design arm, ANTS Design Ventures, we serve homeowners, businesses, developers and international partners.</p>
+      <ul class="checklist">
+        <li><?= icon('check') ?>Design, engineering and construction coordinated by one team</li>
+        <li><?= icon('check') ?>Transparent quotations and regular progress updates</li>
+        <li><?= icon('check') ?>Local delivery with international trade and partner networks</li>
+      </ul>
+      <div class="facts">
+        <div class="fact"><strong>Company Reg.</strong><span><?= e(COMPANIES['astan']['reg']) ?></span></div>
+        <div class="fact"><strong>Headquarters</strong><span>Thalawathugoda</span></div>
+      </div>
+      <a class="btn btn--dark" href="<?= url('about.php') ?>">About the group <?= icon('arrow') ?></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--row reveal">
+      <div>
+        <span class="eyebrow">Our work</span>
+        <h2>Featured projects</h2>
+      </div>
+      <a class="btn btn--line" href="<?= url('portfolio.php') ?>">View full portfolio <?= icon('arrow') ?></a>
     </div>
     <?php if ($featured): ?>
-      <div class="work-grid<?= count($featured) === 3 ? ' work-grid--feature' : '' ?>">
+      <div class="work-grid">
         <?php foreach ($featured as $p): ?><div class="reveal"><?= project_card($p) ?></div><?php endforeach; ?>
       </div>
     <?php else: ?>
@@ -129,47 +131,61 @@ require __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<section class="section ants-band">
-  <div class="container ants-band__grid">
-    <div class="reveal">
-      <span class="eyebrow">Our design arm</span>
-      <h2>ANTS Design Ventures, <em>where spaces take shape.</em></h2>
-      <p class="lead">ANTS is the interior design and creative studio of ASTAN International. It creates considered, beautiful spaces for homes, workplaces and hospitality, and our construction team builds them to the last detail.</p>
-      <p style="margin-top:32px"><a class="btn btn--dark" href="<?= url('ants/') ?>">Visit ANTS Design <?= icon('arrow') ?></a></p>
-    </div>
-    <div class="ants-band__visual reveal reveal-d1">
-      <img src="<?= url('assets/img/interior-line.svg') ?>" alt="" width="800" height="640">
-      <img class="ants-band__logo" src="<?= url('assets/img/ants-logo.svg') ?>" alt="ANTS Design Ventures">
-    </div>
-  </div>
-</section>
-
 <section class="section section--dark">
   <div class="container">
-    <div class="head-row reveal">
-      <div>
-        <span class="eyebrow">How we work</span>
-        <h2>A clear, <em>proven</em> process</h2>
-      </div>
-      <p class="lead">Transparent from the first meeting to the final handover, with no surprises along the way.</p>
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Why ASTAN</span>
+      <h2>Why clients choose us</h2>
     </div>
-    <div class="process">
-      <div class="reveal"><h3>Consult</h3><p>We listen to your goals, visit the site and understand your budget and timeline.</p></div>
-      <div class="reveal reveal-d1"><h3>Plan &amp; design</h3><p>Drawings, specifications and a transparent quotation, ready for your approval.</p></div>
-      <div class="reveal reveal-d2"><h3>Deliver</h3><p>Skilled teams execute the work under close supervision and quality checks.</p></div>
-      <div class="reveal reveal-d3"><h3>Hand over &amp; support</h3><p>Testing, handover and support long after the project is complete.</p></div>
+    <div class="values">
+      <div class="value reveal"><span class="value__icon"><?= icon('id') ?></span><h3>Integrity</h3><p>Honest advice, fair pricing and clear contracts.</p></div>
+      <div class="value reveal reveal-d1"><span class="value__icon"><?= icon('build') ?></span><h3>Quality</h3><p>Proper materials, skilled workmanship and close supervision.</p></div>
+      <div class="value reveal reveal-d2"><span class="value__icon"><?= icon('check') ?></span><h3>Reliability</h3><p>Careful planning, regular updates and on-time delivery.</p></div>
+      <div class="value reveal reveal-d3"><span class="value__icon"><?= icon('trade') ?></span><h3>Reach</h3><p>Rooted in Sri Lanka, with partners and supply chains abroad.</p></div>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="cta reveal">
-      <div>
-        <h2>Have a project in mind?</h2>
-        <p>Tell us what you need and we&rsquo;ll come back with advice and a clear quotation.</p>
-      </div>
-      <a class="btn btn--accent" href="<?= url('contact.php') ?>">Contact us <?= icon('arrow') ?></a>
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">How we work</span>
+      <h2>A clear four-step process</h2>
+      <p class="lead">Transparent from the first meeting to the final handover.</p>
+    </div>
+    <ol class="process">
+      <li class="reveal"><h3>Consult</h3><p>We listen to your goals, visit the site and understand your budget and timeline.</p></li>
+      <li class="reveal reveal-d1"><h3>Plan &amp; design</h3><p>Drawings, specifications and a transparent quotation for your approval.</p></li>
+      <li class="reveal reveal-d2"><h3>Deliver</h3><p>Skilled teams carry out the work with close supervision and quality checks.</p></li>
+      <li class="reveal reveal-d3"><h3>Hand over</h3><p>Testing, handover and support long after the project is complete.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section ants-band">
+  <div class="container ants-band__grid">
+    <div class="reveal">
+      <img class="ants-band__logo" src="<?= url('assets/img/ants-logo.svg') ?>" alt="ANTS Design Ventures">
+      <span class="eyebrow">Our design arm</span>
+      <h2>ANTS Design Ventures</h2>
+      <p class="lead">The interior design studio of ASTAN International. ANTS designs considered, beautiful spaces for homes, workplaces and hospitality, and our construction team builds them.</p>
+      <a class="btn btn--dark" href="<?= url('ants/') ?>">Visit ANTS Design <?= icon('arrow') ?></a>
+    </div>
+    <div class="ants-band__visual reveal reveal-d1">
+      <img src="<?= url('assets/img/interior-line.svg') ?>" alt="" width="800" height="640">
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta">
+    <div>
+      <h2>Have a project in mind?</h2>
+      <p>Tell us what you need and we&rsquo;ll come back with advice and a clear quotation.</p>
+    </div>
+    <div class="cta__actions">
+      <a class="btn btn--accent" href="<?= url('contact.php') ?>">Request a quote <?= icon('arrow') ?></a>
+      <a class="btn btn--ghost" href="<?= tel(PHONES[0]) ?>"><?= icon('phone') ?><?= e(PHONES[0]) ?></a>
     </div>
   </div>
 </section>
