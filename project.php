@@ -91,7 +91,11 @@ require __DIR__ . '/includes/header.php';
     </nav>
   <?php endif; ?>
 
-  <?php if ($stages['before'] && $stages['after']): $b = $stages['before'][0]; $a = $stages['after'][0]; ?>
+  <?php if ($stages['before'] && $stages['after']):
+      $b = $stages['before'][0];
+      // Compare against an After photo other than the cover (already shown above), if there is one.
+      $afterAlt = array_values(array_filter($stages['after'], fn($img) => !$cover || $img['src'] !== $cover['src']));
+      $a = $afterAlt[0] ?? $stages['after'][0]; ?>
     <section class="compare-wrap">
       <h2 class="stage-title">Before &amp; after</h2>
       <p class="stage-intro">Drag the handle to compare.</p>

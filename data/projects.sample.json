@@ -73,6 +73,79 @@
     "updated": 1760400000
   },
   {
+    "id": "bishops-college-seu",
+    "slug": "bishops-college-supportive-educational-unit",
+    "brand": "ants",
+    "title": "Supportive Educational Unit, Bishop's College",
+    "category": "Education",
+    "location": "Colombo 03, Sri Lanka",
+    "year": "2025",
+    "client": "Bishop's College, Colombo 03",
+    "summary": "Refurbishment of the Supportive Educational Unit at the Middle School of Bishop's College: a calm, bright and flexible space planned around how children learn, rest and work together.",
+    "description": "The unit occupied an open ground-floor space under the school building, with dark grey and purple walls, mixed furniture and no clear zones for different activities.\n\nANTS Design Ventures re-planned the space as a series of learning zones: a group activity table, two curved discussion areas, a one-on-one study area, three individual work stations, a sewing corner, a calming corner, a sketch and calm sensory play area, and a dining table beside a kitchen counter. The layout plan, 3D visualisations and finished space are shown below.\n\nWalls were refreshed in soft cream, with child-sized chairs in lavender and violet around round, curved and rectangular tables in a pale timber tone. Mobile whiteboard partitions with violet frames divide the zones, low built-in storage runs along the walls, and a smooth, easy-clean floor finish ties the space together.",
+    "images": [
+      {
+        "src": "assets/img/projects/bishops-college-seu/after-1.jpg",
+        "thumb": "assets/img/projects/bishops-college-seu/after-1-t.jpg",
+        "stage": "after"
+      },
+      {
+        "src": "assets/img/projects/bishops-college-seu/before-1.jpg",
+        "thumb": "assets/img/projects/bishops-college-seu/before-1-t.jpg",
+        "stage": "before"
+      },
+      {
+        "src": "assets/img/projects/bishops-college-seu/before-2.jpg",
+        "thumb": "assets/img/projects/bishops-college-seu/before-2-t.jpg",
+        "stage": "before"
+      },
+      {
+        "src": "assets/img/projects/bishops-college-seu/before-3.jpg",
+        "thumb": "assets/img/projects/bishops-college-seu/before-3-t.jpg",
+        "stage": "before"
+      },
+      {
+        "src": "assets/img/projects/bishops-college-seu/design-1.jpg",
+        "thumb": "assets/img/projects/bishops-college-seu/design-1-t.jpg",
+        "stage": "design"
+      },
+      {
+        "src": "assets/img/projects/bishops-college-seu/design-2.jpg",
+        "thumb": "assets/img/projects/bishops-college-seu/design-2-t.jpg",
+        "stage": "design"
+      },
+      {
+        "src": "assets/img/projects/bishops-college-seu/design-3.jpg",
+        "thumb": "assets/img/projects/bishops-college-seu/design-3-t.jpg",
+        "stage": "design"
+      },
+      {
+        "src": "assets/img/projects/bishops-college-seu/layout-plan.jpg",
+        "thumb": "assets/img/projects/bishops-college-seu/layout-plan-t.jpg",
+        "stage": "design"
+      },
+      {
+        "src": "assets/img/projects/bishops-college-seu/after-2.jpg",
+        "thumb": "assets/img/projects/bishops-college-seu/after-2-t.jpg",
+        "stage": "after"
+      },
+      {
+        "src": "assets/img/projects/bishops-college-seu/after-3.jpg",
+        "thumb": "assets/img/projects/bishops-college-seu/after-3-t.jpg",
+        "stage": "after"
+      },
+      {
+        "src": "assets/img/projects/bishops-college-seu/after-4.jpg",
+        "thumb": "assets/img/projects/bishops-college-seu/after-4-t.jpg",
+        "stage": "after"
+      }
+    ],
+    "featured": true,
+    "published": true,
+    "created": 1761700000,
+    "updated": 1761700000
+  },
+  {
     "id": "sample1",
     "slug": "sample-contemporary-apartment-interior",
     "brand": "ants",

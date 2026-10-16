@@ -41,5 +41,5 @@ const ADMIN_PASSWORD_HASH = '$2y$10$xgkHcTvuTRzeB0OLtymkRe.jKInAqKUEtZKdklwWk5en
 // Portfolio categories suggested in the admin panel (you can also type your own).
 const CATEGORIES = [
     'astan' => ['MEP Contracts', 'Electrical', 'Interior Construction', 'Real Estate', 'Import & Export', 'Investments', 'Other'],
-    'ants'  => ['Residential Interiors', 'Commercial Interiors', 'Office Interiors', 'Hospitality', 'Retail', '3D Visualisation', 'Furniture & Joinery', 'Architecture & Planning', 'Other'],
+    'ants'  => ['Residential Interiors', 'Commercial Interiors', 'Office Interiors', 'Education', 'Hospitality', 'Retail', '3D Visualisation', 'Furniture & Joinery', 'Architecture & Planning', 'Other'],
 ];
